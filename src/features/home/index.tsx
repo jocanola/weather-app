@@ -1,35 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "../../utils/hooks/uselocation";
+import WeatherCard from "../../component/weather-info-card";
 
-export default function Home() {
-    const [isLoding , setIsLoading] = useState(false)
-    const [locationInfo, setLocationInfo] = useState({
-      lat: "",
-      long: ""
-    })
-const handleRequestPe
-  useEffect(()=>{
+export const Home = () => {
+  const [isLoding, setIsLoading] = useState(false);
+  const { locationInfo } = useLocation();
 
-  })
+  return (
+    <View style={style.container}>
+      <WeatherCard />
+    </View>
+  );
+};
 
-const handleGetLocalData= async()=>{
-    try {
-      const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${locationInfo.lat}&lon=${locationInfo}&appid=${process.env.APIKEY}`
-      );
-    } catch (error) {
-        
-    }
-    
-}
-
-  return <View style={style.container}>
-    Home
-  </View>;
-}
-
-const style = StyleSheet({
+const style = StyleSheet.create({
   container: {
     flex: 1,
   },
